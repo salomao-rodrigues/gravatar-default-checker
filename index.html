@@ -27,7 +27,10 @@
 <body>
   <h1>Check if an image can be fetched by Gravatar to be used as a default</h1>
   <form onSubmit="return onSubmit()">
-    <input id="defaultImage" type="text" name="defaultImage" required/>
+    <label>
+      Default image URL:
+      <input id="defaultImage" type="text" name="defaultImage" required/>
+    </label>
     <button type="submit">Load</button>
   </form>
   <img id="image" width=100/>
