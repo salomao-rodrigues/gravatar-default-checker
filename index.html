@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Gravatar Default Image Checker</title>
+  <script src="/md5.js"></script>
+  <script>
+    window.onerror = function onError(err, url, line) { 
+      console.log(err);
+    }
+
+    function loadImage() {
+      var gravatarAPI = "https://www.gravatar.com/avatar/" + md5("dummy-email@example.com");
+      var defaultImage = encodeURIComponent(document.getElementById("defaultImage").value);
+      var gravatarImage = gravatarAPI+"?d="+defaultImage;
+      document.getElementById("image").src = gravatarImage;
+    }
+    function onSubmit() {
+      loadImage();
+
+      return false;
+    }
+  </script>
+</head>
+<body>
+  <h1>Check if an image can be fetched by Gravatar to be used as a default</h1>
+  <form onSubmit="return onSubmit()">
+    <input id="defaultImage" type="text" name="defaultImage" required/>
+    <button type="submit">Load</button>
+  </form>
+  <img id="image" width=100/>
+</body>
+</html>
